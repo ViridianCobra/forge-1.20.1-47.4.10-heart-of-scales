@@ -24,5 +24,8 @@ public final class ModItems {
     public static final RegistryObject<Item> DRACIP_PETALS = ITEMS.register("dracip-petals",
             () -> new Item(new Item.Properties()));
 
+    public static final RegistryObject<Item> DRAGON_SCALE = ITEMS.register("dragon-scale",
+            () -> new Item(new Item.Properties()));
+
     private ModItems() {}
 }
