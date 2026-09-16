@@ -1,0 +1,11 @@
+{
+  "block.heart_of_scales.dragon-egg": "Dragon Egg",
+  "block.heart_of_scales.nest-block": "Dragon Nest",
+  "subspecies.heart_of_scales.forest": "Forest Dragon",
+  "subspecies.heart_of_scales.cave": "Cave Dragon",
+  "subspecies.heart_of_scales.plains": "Plains Dragon",
+  "subspecies.heart_of_scales.mountain": "Mountain Dragon",
+  "subspecies.heart_of_scales.ocean": "Ocean Dragon",
+  "subspecies.heart_of_scales.river": "River Dragon",
+  "itemGroup.heart_of_scales": "Heart of Scales"
+}
