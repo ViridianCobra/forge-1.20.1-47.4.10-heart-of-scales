@@ -27,5 +27,8 @@ public final class ModItems {
     public static final RegistryObject<Item> DRAGON_SCALE = ITEMS.register("dragon-scale",
             () -> new Item(new Item.Properties()));
 
+    public static final RegistryObject<Item> AMORBERRY = ITEMS.register("amorberry",
+            () -> new ItemNameBlockItem(ModBlocks.AMORBERRY_BUSH.get(), new Item.Properties()));
+
     private ModItems() {}
 }

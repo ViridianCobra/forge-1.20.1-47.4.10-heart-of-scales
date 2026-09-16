@@ -1,6 +1,7 @@
 package net.basilisk.heartofscales.registry;
 
 import net.basilisk.heartofscales.HeartOfScales;
+import net.basilisk.heartofscales.block.AmorberryBushBlock;
 import net.basilisk.heartofscales.block.DracipCropBlock;
 import net.basilisk.heartofscales.block.DragonEggBlock;
 import net.basilisk.heartofscales.block.NestBlock;
@@ -33,6 +34,9 @@ public final class ModBlocks {
 
     public static final RegistryObject<Block> DRACIP = BLOCKS.register("dracip",
             () -> new DracipCropBlock(BlockBehaviour.Properties.copy(Blocks.BEETROOTS)));
+
+    public static final RegistryObject<Block> AMORBERRY_BUSH = BLOCKS.register("amorberry-bush",
+            () -> new AmorberryBushBlock(BlockBehaviour.Properties.copy(Blocks.SWEET_BERRY_BUSH)));
 
     private ModBlocks() {}
 }

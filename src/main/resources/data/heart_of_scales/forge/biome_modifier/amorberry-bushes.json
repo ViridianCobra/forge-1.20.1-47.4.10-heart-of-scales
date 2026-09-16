@@ -1,0 +1,6 @@
+{
+  "type": "forge:add_features",
+  "biomes": "#heart_of_scales:has-amorberry-bushes",
+  "features": "heart_of_scales:patch-amorberry-bush",
+  "step": "vegetal_decoration"
+}
