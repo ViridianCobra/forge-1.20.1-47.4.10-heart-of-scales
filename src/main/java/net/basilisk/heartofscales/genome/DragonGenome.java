@@ -1,4 +1,4 @@
-﻿package net.basilisk.heartofscales.genome;
+package net.basilisk.heartofscales.genome;
 
 /**
  * Inherited dragon data, shared by eggs and dragons.

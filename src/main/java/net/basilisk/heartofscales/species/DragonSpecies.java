@@ -1,4 +1,4 @@
-﻿package net.basilisk.heartofscales.species;
+package net.basilisk.heartofscales.species;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.DataResult;

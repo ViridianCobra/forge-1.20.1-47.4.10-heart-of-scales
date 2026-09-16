@@ -1,4 +1,4 @@
-﻿package net.basilisk.heartofscales.nbt;
+package net.basilisk.heartofscales.nbt;
 
 import net.basilisk.heartofscales.genome.DragonGenome;
 import net.minecraft.nbt.CompoundTag;

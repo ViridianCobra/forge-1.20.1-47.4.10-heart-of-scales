@@ -1,4 +1,4 @@
-﻿package net.basilisk.heartofscales.block.entity;
+package net.basilisk.heartofscales.block.entity;
 
 import net.basilisk.heartofscales.genome.DragonGenome;
 import net.basilisk.heartofscales.nbt.GenomeNbt;

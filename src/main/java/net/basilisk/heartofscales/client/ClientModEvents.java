@@ -1,4 +1,4 @@
-﻿package net.basilisk.heartofscales.client;
+package net.basilisk.heartofscales.client;
 
 import net.basilisk.heartofscales.HeartOfScales;
 import net.basilisk.heartofscales.block.entity.DragonEggBlockEntity;

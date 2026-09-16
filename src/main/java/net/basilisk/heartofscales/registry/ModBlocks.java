@@ -1,4 +1,4 @@
-﻿package net.basilisk.heartofscales.registry;
+package net.basilisk.heartofscales.registry;
 
 import net.basilisk.heartofscales.HeartOfScales;
 import net.basilisk.heartofscales.block.DragonEggBlock;
