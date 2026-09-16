@@ -10,5 +10,7 @@
   "itemGroup.heart_of_scales": "Heart of Scales",
   "block.heart_of_scales.dracip": "Dracip",
   "item.heart_of_scales.dracip-seeds": "Dracip Seeds",
-  "item.heart_of_scales.dracip-petals": "Dracip Petals"
+  "item.heart_of_scales.dracip-petals": "Dracip Petals",
+  "item.heart_of_scales.dragon-scale": "Dragon Scale",
+  "hud.heart_of_scales.egg": "%s Egg"
 }

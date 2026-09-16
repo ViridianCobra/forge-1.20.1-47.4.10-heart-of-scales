@@ -11,7 +11,9 @@ import net.basilisk.heartofscales.registry.ModItems;
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraftforge.api.distmarker.Dist;
+import net.basilisk.heartofscales.client.hud.DragonScaleOverlay;
 import net.minecraftforge.client.event.RegisterColorHandlersEvent;
+import net.minecraftforge.client.event.RegisterGuiOverlaysEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
@@ -38,6 +40,11 @@ public final class ClientModEvents {
             if (Minecraft.getInstance().level == null) return NO_TINT;
             return ModRegistries.eggTint(Minecraft.getInstance().level.registryAccess(), DragonEggItem.genomeOf(stack));
         }, ModItems.DRAGON_EGG.get());
+    }
+
+    @SubscribeEvent
+    public static void registerOverlays(RegisterGuiOverlaysEvent event) {
+        event.registerAboveAll(DragonScaleOverlay.ID, new DragonScaleOverlay());
     }
 
     private ClientModEvents() {}
