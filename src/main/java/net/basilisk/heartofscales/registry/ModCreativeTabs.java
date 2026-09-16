@@ -25,6 +25,7 @@ public final class ModCreativeTabs {
                         output.accept(ModItems.DRACIP_SEEDS.get());
                         output.accept(ModItems.DRACIP_PETALS.get());
                         output.accept(ModItems.DRAGON_SCALE.get());
+                        output.accept(ModItems.AMORBERRY.get());
                     })
                     .build());
 
