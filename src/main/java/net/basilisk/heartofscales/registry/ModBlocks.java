@@ -1,9 +1,11 @@
 package net.basilisk.heartofscales.registry;
 
 import net.basilisk.heartofscales.HeartOfScales;
+import net.basilisk.heartofscales.block.DracipCropBlock;
 import net.basilisk.heartofscales.block.DragonEggBlock;
 import net.basilisk.heartofscales.block.NestBlock;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.MapColor;
@@ -28,6 +30,9 @@ public final class ModBlocks {
                     .strength(0.5f)
                     .sound(SoundType.DECORATED_POT)
                     .noOcclusion()));
+
+    public static final RegistryObject<Block> DRACIP = BLOCKS.register("dracip",
+            () -> new DracipCropBlock(BlockBehaviour.Properties.copy(Blocks.BEETROOTS)));
 
     private ModBlocks() {}
 }

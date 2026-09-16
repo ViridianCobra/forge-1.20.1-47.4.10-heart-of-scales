@@ -4,6 +4,7 @@ import net.basilisk.heartofscales.HeartOfScales;
 import net.basilisk.heartofscales.item.DragonEggItem;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemNameBlockItem;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -17,6 +18,11 @@ public final class ModItems {
 
     public static final RegistryObject<Item> NEST = ITEMS.register("nest-block",
             () -> new BlockItem(ModBlocks.NEST.get(), new Item.Properties()));
+    public static final RegistryObject<Item> DRACIP_SEEDS = ITEMS.register("dracip-seeds",
+            () -> new ItemNameBlockItem(ModBlocks.DRACIP.get(), new Item.Properties()));
+
+    public static final RegistryObject<Item> DRACIP_PETALS = ITEMS.register("dracip-petals",
+            () -> new Item(new Item.Properties()));
 
     private ModItems() {}
 }
