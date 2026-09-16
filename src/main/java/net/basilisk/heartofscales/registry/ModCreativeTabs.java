@@ -1,0 +1,29 @@
+﻿package net.basilisk.heartofscales.registry;
+
+import net.basilisk.heartofscales.HeartOfScales;
+import net.basilisk.heartofscales.genome.DragonGenome;
+import net.basilisk.heartofscales.item.DragonEggItem;
+import net.basilisk.heartofscales.species.ModRegistries;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.item.CreativeModeTab;
+import net.minecraftforge.registries.DeferredRegister;
+import net.minecraftforge.registries.RegistryObject;
+
+public final class ModCreativeTabs {
+    public static final DeferredRegister<CreativeModeTab> TABS =
+            DeferredRegister.create(Registries.CREATIVE_MODE_TAB, HeartOfScales.MOD_ID);
+
+    public static final RegistryObject<CreativeModeTab> HEART_OF_SCALES = TABS.register("heart_of_scales",
+            () -> CreativeModeTab.builder()
+                    .title(Component.translatable("itemGroup." + HeartOfScales.MOD_ID))
+                    .icon(() -> DragonEggItem.withGenome(DragonGenome.defaultGenome()))
+                    .displayItems((parameters, output) -> {
+                        parameters.holders().lookup(ModRegistries.DRAGON_SPECIES).ifPresent(species ->
+                                species.listElementIds().forEach(key -> output.accept(DragonEggItem.withGenome(new DragonGenome(key.location().toString())))));
+                        output.accept(ModItems.NEST.get());
+                    })
+                    .build());
+
+    private ModCreativeTabs() {}
+}

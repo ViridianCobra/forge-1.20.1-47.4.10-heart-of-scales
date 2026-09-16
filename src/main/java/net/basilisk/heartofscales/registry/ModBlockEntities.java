@@ -1,0 +1,22 @@
+﻿package net.basilisk.heartofscales.registry;
+
+import net.basilisk.heartofscales.HeartOfScales;
+import net.basilisk.heartofscales.block.entity.DragonEggBlockEntity;
+import net.basilisk.heartofscales.block.entity.NestBlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraftforge.registries.DeferredRegister;
+import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.RegistryObject;
+
+public final class ModBlockEntities {
+    public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITIES =
+            DeferredRegister.create(ForgeRegistries.BLOCK_ENTITY_TYPES, HeartOfScales.MOD_ID);
+
+    public static final RegistryObject<BlockEntityType<DragonEggBlockEntity>> DRAGON_EGG = BLOCK_ENTITIES.register("dragon-egg",
+            () -> BlockEntityType.Builder.of(DragonEggBlockEntity::new, ModBlocks.DRAGON_EGG.get()).build(null));
+
+    public static final RegistryObject<BlockEntityType<NestBlockEntity>> NEST = BLOCK_ENTITIES.register("nest-block",
+            () -> BlockEntityType.Builder.of(NestBlockEntity::new, ModBlocks.NEST.get()).build(null));
+
+    private ModBlockEntities() {}
+}

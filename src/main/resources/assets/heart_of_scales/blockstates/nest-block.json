@@ -1,0 +1,17 @@
+﻿{
+  "multipart": [
+    {
+      "apply": {
+        "model": "heart_of_scales:block/nest-block"
+      }
+    },
+    {
+      "when": {
+        "has_egg": "true"
+      },
+      "apply": {
+        "model": "heart_of_scales:block/nest-block-egg"
+      }
+    }
+  ]
+}
