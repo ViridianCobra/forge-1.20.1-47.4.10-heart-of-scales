@@ -22,6 +22,8 @@ public final class ModCreativeTabs {
                         parameters.holders().lookup(ModRegistries.DRAGON_SPECIES).ifPresent(species ->
                                 species.listElementIds().forEach(key -> output.accept(DragonEggItem.withGenome(new DragonGenome(key.location().toString())))));
                         output.accept(ModItems.NEST.get());
+                        output.accept(ModItems.DRACIP_SEEDS.get());
+                        output.accept(ModItems.DRACIP_PETALS.get());
                     })
                     .build());
 

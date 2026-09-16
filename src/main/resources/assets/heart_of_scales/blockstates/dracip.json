@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "age=0": {
+      "model": "heart_of_scales:block/dracip-stage0"
+    },
+    "age=1": {
+      "model": "heart_of_scales:block/dracip-stage1"
+    },
+    "age=2": {
+      "model": "heart_of_scales:block/dracip-stage2"
+    },
+    "age=3": {
+      "model": "heart_of_scales:block/dracip-stage3"
+    }
+  }
+}

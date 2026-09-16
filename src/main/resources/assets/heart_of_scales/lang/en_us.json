@@ -7,5 +7,8 @@
   "subspecies.heart_of_scales.mountain": "Mountain Dragon",
   "subspecies.heart_of_scales.ocean": "Ocean Dragon",
   "subspecies.heart_of_scales.river": "River Dragon",
-  "itemGroup.heart_of_scales": "Heart of Scales"
+  "itemGroup.heart_of_scales": "Heart of Scales",
+  "block.heart_of_scales.dracip": "Dracip",
+  "item.heart_of_scales.dracip-seeds": "Dracip Seeds",
+  "item.heart_of_scales.dracip-petals": "Dracip Petals"
 }
