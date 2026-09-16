@@ -3,3 +3,10 @@
 # are changed when only line endings change.
 src/generated/**/.cache/cache text eol=lf
 src/generated/**/*.json text eol=lf
+
+# Normalise line endings so Windows and Linux contributors don't produce noisy diffs
+* text=auto eol=lf
+*.bat text eol=crlf
+*.png binary
+*.ogg binary
+*.jar binary
