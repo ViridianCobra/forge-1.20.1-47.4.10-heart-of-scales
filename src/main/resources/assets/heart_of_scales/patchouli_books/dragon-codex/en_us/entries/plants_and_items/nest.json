@@ -1,0 +1,18 @@
+{
+  "name": "Dragon Nest",
+  "category": "heart_of_scales:plants_and_items",
+  "icon": "heart_of_scales:nest-block",
+  "sortnum": 3,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "A woven nest that holds a single dragon egg. Right-click the nest with an egg to set it in place, and right-click with an empty hand to take it back.$(br2)Wild dragons build these in their territory."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "heart_of_scales:nest-block",
+      "title": "Dragon Nest",
+      "text": "Breaking a nest that holds an egg drops both, and the egg keeps its subspecies."
+    }
+  ]
+}

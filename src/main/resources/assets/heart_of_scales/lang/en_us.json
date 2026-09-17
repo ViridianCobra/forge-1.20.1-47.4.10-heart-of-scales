@@ -14,5 +14,7 @@
   "item.heart_of_scales.dragon-scale": "Dragon Scale",
   "hud.heart_of_scales.egg": "%s Egg",
   "block.heart_of_scales.amorberry-bush": "Amorberry Bush",
-  "item.heart_of_scales.amorberry": "Amorberry"
+  "item.heart_of_scales.amorberry": "Amorberry",
+  "item.heart_of_scales.dragon-codex": "Dragon Codex",
+  "book.heart_of_scales.dragon-codex.landing": "Everything a keeper has learned about dragons, their eggs, and the plants they favour."
 }

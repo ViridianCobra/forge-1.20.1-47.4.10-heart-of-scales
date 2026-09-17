@@ -1,0 +1,18 @@
+{
+  "name": "Amorberry",
+  "category": "heart_of_scales:plants_and_items",
+  "icon": "heart_of_scales:amorberry",
+  "sortnum": 1,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "A bush found in forests and birch forests. It grows like a sweet berry bush and is picked the same way, though it has no thorns.$(br2)Amorberries are not for eating. Dragons find them irresistible."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "heart_of_scales:amorberry",
+      "title": "Amorberry",
+      "text": "Plant a berry to grow a new bush. Ripe bushes are picked by right-clicking and regrow their fruit in time."
+    }
+  ]
+}

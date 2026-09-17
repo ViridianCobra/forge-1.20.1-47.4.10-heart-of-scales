@@ -1,0 +1,18 @@
+{
+  "name": "Plains Dragon",
+  "category": "heart_of_scales:dragons",
+  "icon": "heart_of_scales:dragon-egg{BlockEntityTag:{Subspecies:\"heart_of_scales:plains\"}}",
+  "sortnum": 2,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(bold)Species:$() Air$(br)$(bold)Habitat:$() open plains$(br2)An Air dragon that soars over wide, flat grassland."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "heart_of_scales:dragon-egg{BlockEntityTag:{Subspecies:\"heart_of_scales:plains\"}}",
+      "title": "Plains Dragon Egg",
+      "text": "Each subspecies lays an egg of its own colour. Place the egg in a $(l:plants_and_items/nest)Dragon Nest$() to keep it safe."
+    }
+  ]
+}

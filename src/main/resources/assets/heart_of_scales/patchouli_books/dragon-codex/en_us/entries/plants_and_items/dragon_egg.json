@@ -1,0 +1,18 @@
+{
+  "name": "Dragon Egg",
+  "category": "heart_of_scales:plants_and_items",
+  "icon": "heart_of_scales:dragon-egg",
+  "sortnum": 2,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Every dragon begins as an egg. The colour of the shell tells you which subspecies laid it.$(br2)An egg can be placed on the ground or set into a $(l:plants_and_items/nest)Dragon Nest$(). Breaking it picks it up again without harm."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "heart_of_scales:dragon-egg",
+      "title": "Dragon Egg",
+      "text": "Wearing a $(l:plants_and_items/dragon_scale)Dragon Scale$() reveals an egg's subspecies when you look at it."
+    }
+  ]
+}
