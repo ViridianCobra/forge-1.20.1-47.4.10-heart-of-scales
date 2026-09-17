@@ -1,0 +1,18 @@
+{
+  "name": "River Dragon",
+  "category": "heart_of_scales:dragons",
+  "icon": "heart_of_scales:dragon-egg{BlockEntityTag:{Subspecies:\"heart_of_scales:river\"}}",
+  "sortnum": 5,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(bold)Species:$() Water$(br)$(bold)Habitat:$() rivers$(br2)A Water dragon that hunts along winding rivers."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "heart_of_scales:dragon-egg{BlockEntityTag:{Subspecies:\"heart_of_scales:river\"}}",
+      "title": "River Dragon Egg",
+      "text": "Each subspecies lays an egg of its own colour. Place the egg in a $(l:plants_and_items/nest)Dragon Nest$() to keep it safe."
+    }
+  ]
+}

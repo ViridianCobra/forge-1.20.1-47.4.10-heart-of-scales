@@ -1,0 +1,17 @@
+{
+  "name": "Dragon Scale",
+  "category": "heart_of_scales:plants_and_items",
+  "icon": "heart_of_scales:dragon-scale",
+  "sortnum": 4,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "A scale shed by a dragon. Worn in a charm slot, it lets you recognise a dragon egg at a glance: look at an egg or a nest and its subspecies is shown beneath the crosshair.$(br2)Bound into a book, it becomes this codex."
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "heart_of_scales:dragon-codex",
+      "title": "Dragon Codex"
+    }
+  ]
+}

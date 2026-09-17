@@ -1,0 +1,9 @@
+{
+  "name": "item.heart_of_scales.dragon-codex",
+  "landing_text": "book.heart_of_scales.dragon-codex.landing",
+  "version": 1,
+  "creative_tab": "heart_of_scales:heart_of_scales",
+  "model": "heart_of_scales:dragon-codex",
+  "use_resource_pack": true,
+  "show_progress": false
+}
