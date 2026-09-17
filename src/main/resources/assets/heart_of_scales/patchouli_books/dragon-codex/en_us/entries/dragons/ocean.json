@@ -1,7 +1,7 @@
 {
   "name": "Ocean Dragon",
   "category": "heart_of_scales:dragons",
-  "icon": "heart_of_scales:dragon-egg{BlockEntityTag:{Subspecies:\"heart_of_scales:ocean\"}}",
+  "icon": "heart_of_scales:dragon-egg[heart_of_scales:genome=\"heart_of_scales:ocean\"]",
   "sortnum": 4,
   "pages": [
     {
@@ -10,7 +10,7 @@
     },
     {
       "type": "patchouli:spotlight",
-      "item": "heart_of_scales:dragon-egg{BlockEntityTag:{Subspecies:\"heart_of_scales:ocean\"}}",
+      "item": "heart_of_scales:dragon-egg[heart_of_scales:genome=\"heart_of_scales:ocean\"]",
       "title": "Ocean Dragon Egg",
       "text": "Each subspecies lays an egg of its own colour. Place the egg in a $(l:plants_and_items/nest)Dragon Nest$() to keep it safe."
     }

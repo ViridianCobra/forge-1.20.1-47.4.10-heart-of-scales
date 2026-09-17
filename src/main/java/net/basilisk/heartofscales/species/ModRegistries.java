@@ -6,7 +6,7 @@ import net.minecraft.core.Registry;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraftforge.registries.DataPackRegistryEvent;
+import net.neoforged.neoforge.registries.DataPackRegistryEvent;
 
 import java.util.Optional;
 

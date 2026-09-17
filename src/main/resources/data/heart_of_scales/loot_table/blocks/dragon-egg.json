@@ -9,14 +9,10 @@
           "name": "heart_of_scales:dragon-egg",
           "functions": [
             {
-              "function": "minecraft:copy_nbt",
+              "function": "minecraft:copy_components",
               "source": "block_entity",
-              "ops": [
-                {
-                  "source": "Subspecies",
-                  "target": "BlockEntityTag.Subspecies",
-                  "op": "replace"
-                }
+              "include": [
+                "heart_of_scales:genome"
               ]
             }
           ]

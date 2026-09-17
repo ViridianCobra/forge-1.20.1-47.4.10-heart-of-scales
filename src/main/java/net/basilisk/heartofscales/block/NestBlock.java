@@ -7,6 +7,7 @@ import net.basilisk.heartofscales.registry.ModItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockGetter;
@@ -40,7 +41,7 @@ public class NestBlock extends Block implements EntityBlock {
     }
 
     @Override
-    public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
+    protected VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
         return state.getValue(HAS_EGG) ? NEST_WITH_EGG : NEST;
     }
 
@@ -50,39 +51,40 @@ public class NestBlock extends Block implements EntityBlock {
         return new NestBlockEntity(pos, state);
     }
 
+    // 1.21 splits Block#use into useItemOn (holding something) and useWithoutItem (empty hand)
     @Override
-    public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+    protected ItemInteractionResult useItemOn(ItemStack held, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+        if (state.getValue(HAS_EGG) || !held.is(ModItems.DRAGON_EGG.get())) {
+            return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+        }
         if (!(level.getBlockEntity(pos) instanceof NestBlockEntity nest)) {
+            return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+        }
+        // Set on both sides so the client's predicted state renders with the right tint on the first frame
+        nest.setEgg(DragonEggItem.genomeOf(held));
+        if (!level.isClientSide) {
+            if (!player.getAbilities().instabuild) {
+                held.shrink(1);
+            }
+            level.setBlock(pos, state.setValue(HAS_EGG, true), Block.UPDATE_ALL);
+        }
+        return ItemInteractionResult.sidedSuccess(level.isClientSide);
+    }
+
+    @Override
+    protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hit) {
+        if (!state.getValue(HAS_EGG) || !(level.getBlockEntity(pos) instanceof NestBlockEntity nest)) {
             return InteractionResult.PASS;
         }
-        ItemStack held = player.getItemInHand(hand);
-        boolean hasEgg = state.getValue(HAS_EGG);
-
-        if (!hasEgg && held.is(ModItems.DRAGON_EGG.get())) {
-            // Set on both sides so the client's predicted state renders with the right tint on the first frame
-            nest.setEgg(DragonEggItem.genomeOf(held));
-            if (!level.isClientSide) {
-                if (!player.getAbilities().instabuild) {
-                    held.shrink(1);
-                }
-                level.setBlock(pos, state.setValue(HAS_EGG, true), Block.UPDATE_ALL);
+        if (!level.isClientSide) {
+            DragonGenome egg = nest.getEgg() != null ? nest.getEgg() : DragonGenome.defaultGenome();
+            nest.setEgg(null);
+            level.setBlock(pos, state.setValue(HAS_EGG, false), Block.UPDATE_ALL);
+            ItemStack stack = DragonEggItem.withGenome(egg);
+            if (!player.addItem(stack)) {
+                player.drop(stack, false);
             }
-            return InteractionResult.sidedSuccess(level.isClientSide);
         }
-
-        if (hasEgg && held.isEmpty()) {
-            if (!level.isClientSide) {
-                DragonGenome egg = nest.getEgg() != null ? nest.getEgg() : DragonGenome.defaultGenome();
-                nest.setEgg(null);
-                level.setBlock(pos, state.setValue(HAS_EGG, false), Block.UPDATE_ALL);
-                ItemStack stack = DragonEggItem.withGenome(egg);
-                if (!player.addItem(stack)) {
-                    player.drop(stack, false);
-                }
-            }
-            return InteractionResult.sidedSuccess(level.isClientSide);
-        }
-
-        return InteractionResult.PASS;
+        return InteractionResult.sidedSuccess(level.isClientSide);
     }
 }

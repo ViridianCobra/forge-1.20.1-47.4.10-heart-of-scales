@@ -3,21 +3,21 @@ package net.basilisk.heartofscales.client;
 import net.basilisk.heartofscales.HeartOfScales;
 import net.basilisk.heartofscales.block.entity.DragonEggBlockEntity;
 import net.basilisk.heartofscales.block.entity.NestBlockEntity;
+import net.basilisk.heartofscales.client.hud.DragonScaleOverlay;
 import net.basilisk.heartofscales.genome.DragonGenome;
 import net.basilisk.heartofscales.item.DragonEggItem;
-import net.basilisk.heartofscales.species.ModRegistries;
 import net.basilisk.heartofscales.registry.ModBlocks;
 import net.basilisk.heartofscales.registry.ModItems;
+import net.basilisk.heartofscales.species.ModRegistries;
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraftforge.api.distmarker.Dist;
-import net.basilisk.heartofscales.client.hud.DragonScaleOverlay;
-import net.minecraftforge.client.event.RegisterColorHandlersEvent;
-import net.minecraftforge.client.event.RegisterGuiOverlaysEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.client.event.RegisterColorHandlersEvent;
+import net.neoforged.neoforge.client.event.RegisterGuiLayersEvent;
 
-@Mod.EventBusSubscriber(modid = HeartOfScales.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+@EventBusSubscriber(modid = HeartOfScales.MOD_ID, value = Dist.CLIENT)
 public final class ClientModEvents {
     private static final int NO_TINT = 0xFFFFFF;
 
@@ -43,7 +43,7 @@ public final class ClientModEvents {
     }
 
     @SubscribeEvent
-    public static void registerOverlays(RegisterGuiOverlaysEvent event) {
+    public static void registerOverlays(RegisterGuiLayersEvent event) {
         event.registerAboveAll(DragonScaleOverlay.ID, new DragonScaleOverlay());
     }
 

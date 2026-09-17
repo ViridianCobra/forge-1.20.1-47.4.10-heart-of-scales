@@ -3,7 +3,10 @@ package net.basilisk.heartofscales.block.entity;
 import net.basilisk.heartofscales.genome.DragonGenome;
 import net.basilisk.heartofscales.nbt.GenomeNbt;
 import net.basilisk.heartofscales.registry.ModBlockEntities;
+import net.basilisk.heartofscales.registry.ModDataComponents;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.core.component.DataComponentMap;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
@@ -29,14 +32,14 @@ public class DragonEggBlockEntity extends BlockEntity {
     }
 
     @Override
-    protected void saveAdditional(CompoundTag tag) {
-        super.saveAdditional(tag);
+    protected void saveAdditional(CompoundTag tag, HolderLookup.Provider registries) {
+        super.saveAdditional(tag, registries);
         GenomeNbt.save(genome, tag);
     }
 
     @Override
-    public void load(CompoundTag tag) {
-        super.load(tag);
+    protected void loadAdditional(CompoundTag tag, HolderLookup.Provider registries) {
+        super.loadAdditional(tag, registries);
         genome = GenomeNbt.load(tag);
         // Block entity data arrives after the chunk has already re-rendered for the block change, so ask for another pass
         if (level != null && level.isClientSide) {
@@ -44,9 +47,28 @@ public class DragonEggBlockEntity extends BlockEntity {
         }
     }
 
+    // Item <-> block entity: vanilla copies the genome component in on placement and out on pick-block / loot copy_components
     @Override
-    public CompoundTag getUpdateTag() {
-        return saveWithoutMetadata();
+    protected void applyImplicitComponents(DataComponentInput input) {
+        super.applyImplicitComponents(input);
+        DragonGenome fromItem = input.get(ModDataComponents.GENOME.get());
+        if (fromItem != null) genome = fromItem;
+    }
+
+    @Override
+    protected void collectImplicitComponents(DataComponentMap.Builder builder) {
+        super.collectImplicitComponents(builder);
+        builder.set(ModDataComponents.GENOME.get(), genome);
+    }
+
+    @Override
+    public void removeComponentsFromTag(CompoundTag tag) {
+        GenomeNbt.remove(tag);
+    }
+
+    @Override
+    public CompoundTag getUpdateTag(HolderLookup.Provider registries) {
+        return saveWithoutMetadata(registries);
     }
 
     @Override

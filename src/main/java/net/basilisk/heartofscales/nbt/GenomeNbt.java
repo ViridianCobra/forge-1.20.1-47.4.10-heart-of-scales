@@ -17,5 +17,9 @@ public final class GenomeNbt {
                 : DragonGenome.defaultGenome();
     }
 
+    public static void remove(CompoundTag tag) {
+        tag.remove(TAG_SUBSPECIES);
+    }
+
     private GenomeNbt() {}
 }
