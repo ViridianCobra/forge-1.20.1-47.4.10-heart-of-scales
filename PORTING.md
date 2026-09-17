@@ -25,6 +25,7 @@ Add anything new you hit.
 - Mod constructor takes `IEventBus`.
 - Loot modifiers: codec is a `MapCodec`, registry key `NeoForgeRegistries.Keys.GLOBAL_LOOT_MODIFIER_SERIALIZERS`, item codec `BuiltInRegistries.ITEM.byNameCodec()`.
 - `DataPackRegistryEvent.NewRegistry` is unchanged apart from the package.
+- `StructureType#codec()` returns a `MapCodec` from 1.20.5, so `CaveNestStructure.CODEC` drops the trailing `.codec()` and becomes a `MapCodec`.
 
 ## Item NBT becomes data components
 This is the largest change.
@@ -52,4 +53,5 @@ This is the largest change.
 
 ## Data folder names
 - `loot_tables` to `loot_table`, `recipes` to `recipe`, `tags/items` to `tags/item`, `tags/blocks` to `tags/block`.
+- `structures` to `structure` (template NBT files). Worldgen JSON for structures is unchanged.
 - `forge/` to `neoforge/`: `neoforge:add_features`, `neoforge:loot_table_id`.

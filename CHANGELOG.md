@@ -11,3 +11,4 @@ When a version is released, drop "(Unreleased)" from its heading and start the n
 - Amorberry bush, picked like sweet berries, generating in forest and birch biomes.
 - Dragon scale item, worn as a Curios charm, shows egg subspecies under the crosshair.
 - Dragon Codex guidebook via Patchouli, crafted from a book and a dragon scale.
+- Cave nest structure generating on cave floors in all overworld biomes. Needs six blocks of headroom and fills the ground beneath it so it never hangs off a ledge.
