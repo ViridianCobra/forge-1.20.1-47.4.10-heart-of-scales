@@ -4,6 +4,7 @@ import net.basilisk.heartofscales.HeartOfScales;
 import net.basilisk.heartofscales.block.AmorberryBushBlock;
 import net.basilisk.heartofscales.block.DracipCropBlock;
 import net.basilisk.heartofscales.block.DragonEggBlock;
+import net.basilisk.heartofscales.block.GlowingMushroomBlock;
 import net.basilisk.heartofscales.block.NestBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -37,6 +38,10 @@ public final class ModBlocks {
 
     public static final RegistryObject<Block> AMORBERRY_BUSH = BLOCKS.register("amorberry-bush",
             () -> new AmorberryBushBlock(BlockBehaviour.Properties.copy(Blocks.SWEET_BERRY_BUSH)));
+
+    public static final RegistryObject<Block> GLOWING_MUSHROOM = BLOCKS.register("glowing-mushroom",
+            () -> new GlowingMushroomBlock(BlockBehaviour.Properties.copy(Blocks.BROWN_MUSHROOM)
+                    .lightLevel(state -> 9)));
 
     private ModBlocks() {}
 }
