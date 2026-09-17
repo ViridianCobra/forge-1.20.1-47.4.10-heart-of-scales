@@ -5,6 +5,7 @@ import net.basilisk.heartofscales.registry.ModBlocks;
 import net.basilisk.heartofscales.registry.ModCreativeTabs;
 import net.basilisk.heartofscales.registry.ModItems;
 import net.basilisk.heartofscales.registry.ModLootModifiers;
+import net.basilisk.heartofscales.registry.ModStructureTypes;
 import net.basilisk.heartofscales.species.ModRegistries;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
@@ -22,6 +23,7 @@ public class HeartOfScales {
         ModBlockEntities.BLOCK_ENTITIES.register(modEventBus);
         ModCreativeTabs.TABS.register(modEventBus);
         ModLootModifiers.LOOT_MODIFIERS.register(modEventBus);
+        ModStructureTypes.STRUCTURE_TYPES.register(modEventBus);
         modEventBus.addListener(ModRegistries::registerDatapackRegistries);
     }
 }
