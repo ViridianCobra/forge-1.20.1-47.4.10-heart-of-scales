@@ -41,7 +41,8 @@ public final class ModBlocks {
 
     public static final RegistryObject<Block> MUTATION_MUSHROOM = BLOCKS.register("mutation-mushroom",
             () -> new MutationMushroomBlock(BlockBehaviour.Properties.copy(Blocks.BROWN_MUSHROOM)
-                    .lightLevel(state -> 9)));
+                    .lightLevel(state -> 9)
+                    .emissiveRendering((state, level, pos) -> true)));
 
     private ModBlocks() {}
 }

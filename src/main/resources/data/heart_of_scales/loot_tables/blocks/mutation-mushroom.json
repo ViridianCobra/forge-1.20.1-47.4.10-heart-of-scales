@@ -6,7 +6,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "heart_of_scales:glowing-mushroom"
+          "name": "heart_of_scales:mutation-mushroom"
         }
       ],
       "conditions": [
