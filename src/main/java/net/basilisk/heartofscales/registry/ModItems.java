@@ -30,8 +30,8 @@ public final class ModItems {
     public static final RegistryObject<Item> AMORBERRY = ITEMS.register("amorberry",
             () -> new ItemNameBlockItem(ModBlocks.AMORBERRY_BUSH.get(), new Item.Properties()));
 
-    public static final RegistryObject<Item> GLOWING_MUSHROOM = ITEMS.register("glowing-mushroom",
-            () -> new BlockItem(ModBlocks.GLOWING_MUSHROOM.get(), new Item.Properties()));
+    public static final RegistryObject<Item> MUTATION_MUSHROOM = ITEMS.register("mutation-mushroom",
+            () -> new BlockItem(ModBlocks.MUTATION_MUSHROOM.get(), new Item.Properties()));
 
     private ModItems() {}
 }
