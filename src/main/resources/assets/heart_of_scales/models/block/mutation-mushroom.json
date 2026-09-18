@@ -2,6 +2,6 @@
   "parent": "minecraft:block/cross",
   "render_type": "minecraft:cutout",
   "textures": {
-    "cross": "minecraft:block/brown_mushroom"
+    "cross": "heart_of_scales:block/mutation-mushroom"
   }
 }
