@@ -11,6 +11,7 @@ When a version is released, drop "(Unreleased)" from its heading and start the n
 - Amorberry bush, picked like sweet berries, generating in forest and birch biomes.
 - Dragon scale item, worn as a Curios charm, shows egg subspecies under the crosshair.
 - Dragon Codex guidebook via Patchouli, crafted from a book and a dragon scale.
-- Cave nest structure generating on cave floors in all overworld biomes. Needs six blocks of headroom and fills the ground beneath it so it never hangs off a ledge.
+- Cave nest structure generating on cave floors in all overworld biomes. Needs six blocks of headroom and fills the ground beneath it so it never hangs off a ledge. Avoids flooded caves and spots where it would breach a neighbouring water or lava pocket.
+- Nest structures generate after ores, stone blobs and vegetation, so their blocks are no longer replaced and trees do not grow inside them.
 - Forest nest structure generating on the surface in forest and birch biomes.
 - Glowing mushroom block, light level 9, placeable on any solid block. Placeholder brown mushroom texture.
