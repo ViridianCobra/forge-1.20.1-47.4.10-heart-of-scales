@@ -5,6 +5,7 @@ import net.basilisk.heartofscales.item.DragonEggItem;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemNameBlockItem;
+import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -32,6 +33,9 @@ public final class ModItems {
 
     public static final RegistryObject<Item> GLOWING_MUSHROOM = ITEMS.register("glowing-mushroom",
             () -> new BlockItem(ModBlocks.GLOWING_MUSHROOM.get(), new Item.Properties()));
+
+    public static final RegistryObject<Item> DRAGON_SPAWN_EGG = ITEMS.register("dragon-spawn-egg",
+            () -> new ForgeSpawnEggItem(ModEntities.DRAGON, 0x5B7F3A, 0xD8C27A, new Item.Properties()));
 
     private ModItems() {}
 }

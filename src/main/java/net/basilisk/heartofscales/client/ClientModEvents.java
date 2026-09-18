@@ -7,7 +7,10 @@ import net.basilisk.heartofscales.genome.DragonGenome;
 import net.basilisk.heartofscales.item.DragonEggItem;
 import net.basilisk.heartofscales.species.ModRegistries;
 import net.basilisk.heartofscales.registry.ModBlocks;
+import net.basilisk.heartofscales.registry.ModEntities;
 import net.basilisk.heartofscales.registry.ModItems;
+import net.basilisk.heartofscales.client.entity.DragonRenderer;
+import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraftforge.api.distmarker.Dist;
@@ -40,6 +43,11 @@ public final class ClientModEvents {
             if (Minecraft.getInstance().level == null) return NO_TINT;
             return ModRegistries.eggTint(Minecraft.getInstance().level.registryAccess(), DragonEggItem.genomeOf(stack));
         }, ModItems.DRAGON_EGG.get());
+    }
+
+    @SubscribeEvent
+    public static void registerEntityRenderers(EntityRenderersEvent.RegisterRenderers event) {
+        event.registerEntityRenderer(ModEntities.DRAGON.get(), DragonRenderer::new);
     }
 
     @SubscribeEvent
