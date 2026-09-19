@@ -3,10 +3,13 @@ package net.basilisk.heartofscales.entity;
 import net.basilisk.heartofscales.block.DragonBeaconBlock;
 import net.basilisk.heartofscales.entity.ai.FleeCarelessPlayerGoal;
 import net.basilisk.heartofscales.genome.DragonGenome;
+import net.basilisk.heartofscales.genome.Inheritance;
 import net.basilisk.heartofscales.item.DragonStaffItem;
 import net.basilisk.heartofscales.nbt.GenomeNbt;
+import net.basilisk.heartofscales.registry.ModItems;
 import net.basilisk.heartofscales.species.DragonSpecies;
 import net.basilisk.heartofscales.species.ModRegistries;
+import net.basilisk.heartofscales.species.SpeciesGroup;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.GlobalPos;
@@ -31,6 +34,7 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.entity.SpawnGroupData;
 import net.minecraft.world.entity.TamableAnimal;
+import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
@@ -39,6 +43,7 @@ import net.minecraftforge.event.ForgeEventFactory;
 import org.jetbrains.annotations.Nullable;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.ai.goal.BreedGoal;
 import net.minecraft.world.entity.ai.goal.FloatGoal;
 import net.minecraft.world.entity.ai.goal.FollowOwnerGoal;
 import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
@@ -58,6 +63,7 @@ import software.bernie.geckolib.core.animation.RawAnimation;
 import software.bernie.geckolib.util.GeckoLibUtil;
 
 import java.util.Optional;
+import java.util.Random;
 import java.util.Set;
 
 public class DragonEntity extends TamableAnimal implements GeoEntity {
@@ -178,8 +184,9 @@ public class DragonEntity extends TamableAnimal implements GeoEntity {
         goalSelector.addGoal(0, new FloatGoal(this));
         goalSelector.addGoal(1, new SitWhenOrderedToGoal(this));
         goalSelector.addGoal(2, new FleeCarelessPlayerGoal(this, 8.0f, 1.2, 1.6));
-        goalSelector.addGoal(3, new MoveTowardsRestrictionGoal(this, 1.0));
-        goalSelector.addGoal(4, new FollowOwnerGoal(this, 1.0, 10.0f, 2.0f, false) {
+        goalSelector.addGoal(3, new BreedGoal(this, 1.0));
+        goalSelector.addGoal(4, new MoveTowardsRestrictionGoal(this, 1.0));
+        goalSelector.addGoal(5, new FollowOwnerGoal(this, 1.0, 10.0f, 2.0f, false) {
             @Override
             public boolean canUse() {
                 return getCommand() == DragonCommand.FOLLOW && super.canUse();
@@ -190,9 +197,9 @@ public class DragonEntity extends TamableAnimal implements GeoEntity {
                 return getCommand() == DragonCommand.FOLLOW && super.canContinueToUse();
             }
         });
-        goalSelector.addGoal(5, new WaterAvoidingRandomStrollGoal(this, 1.0));
-        goalSelector.addGoal(6, new LookAtPlayerGoal(this, Player.class, 8.0f));
-        goalSelector.addGoal(7, new RandomLookAroundGoal(this));
+        goalSelector.addGoal(6, new WaterAvoidingRandomStrollGoal(this, 1.0));
+        goalSelector.addGoal(7, new LookAtPlayerGoal(this, Player.class, 8.0f));
+        goalSelector.addGoal(8, new RandomLookAroundGoal(this));
     }
 
     public DragonCommand getCommand() {
@@ -345,9 +352,32 @@ public class DragonEntity extends TamableAnimal implements GeoEntity {
         return super.mobInteract(player, hand);
     }
 
+    /** Amorberry is the breeding food; wild dragons ignore it so only tamed pairs breed. */
     @Override
     public boolean isFood(ItemStack stack) {
-        return false;
+        return isTame() && stack.is(ModItems.AMORBERRY.get());
+    }
+
+    public Optional<SpeciesGroup> getSpeciesGroup() {
+        return ModRegistries.species(level().registryAccess(), getSubspecies()).map(DragonSpecies::species);
+    }
+
+    /** Vanilla checks same class + both in love; dragons must also be tamed and of the same parent species. */
+    @Override
+    public boolean canMate(Animal other) {
+        if (!super.canMate(other) || !(other instanceof DragonEntity mate) || !isTame() || !mate.isTame()) return false;
+        Optional<SpeciesGroup> mine = getSpeciesGroup();
+        return mine.isPresent() && mine.equals(mate.getSpeciesGroup());
+    }
+
+    /** Dragons lay an egg carrying the child genome instead of spawning a baby. */
+    @Override
+    public void spawnChildFromBreeding(ServerLevel level, Animal mate) {
+        if (mate instanceof DragonEntity other) {
+            DragonGenome child = Inheritance.child(getGenome(), other.getGenome(), new Random(random.nextLong()));
+            EggLaying.lay(level, this, child);
+        }
+        finalizeSpawnChildFromBreeding(level, mate, null);
     }
 
     @Override
