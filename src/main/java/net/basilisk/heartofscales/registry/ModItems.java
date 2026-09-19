@@ -2,7 +2,9 @@ package net.basilisk.heartofscales.registry;
 
 import net.basilisk.heartofscales.HeartOfScales;
 import net.basilisk.heartofscales.item.DragonEggItem;
+import net.basilisk.heartofscales.item.DragonStaffItem;
 import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.DoubleHighBlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemNameBlockItem;
 import net.minecraftforge.common.ForgeSpawnEggItem;
@@ -36,6 +38,12 @@ public final class ModItems {
 
     public static final RegistryObject<Item> DRAGON_SPAWN_EGG = ITEMS.register("dragon-spawn-egg",
             () -> new ForgeSpawnEggItem(ModEntities.DRAGON, 0x5B7F3A, 0xD8C27A, new Item.Properties()));
+
+    public static final RegistryObject<Item> DRAGON_BEACON = ITEMS.register("dragon-beacon",
+            () -> new DoubleHighBlockItem(ModBlocks.DRAGON_BEACON.get(), new Item.Properties()));
+
+    public static final RegistryObject<Item> DRAGON_STAFF = ITEMS.register("dragon-staff",
+            () -> new DragonStaffItem(new Item.Properties().stacksTo(1)));
 
     private ModItems() {}
 }
