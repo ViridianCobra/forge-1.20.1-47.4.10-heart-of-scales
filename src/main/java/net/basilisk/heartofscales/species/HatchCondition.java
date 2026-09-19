@@ -11,7 +11,14 @@ public enum HatchCondition implements StringRepresentable {
     DARK("dark") {
         @Override
         public boolean test(Level level, BlockPos nest) {
-            return level.getMaxLocalRawBrightness(nest) <= MAX_LIGHT;
+            return level.getMaxLocalRawBrightness(nest) <= DARK_MAX_LIGHT;
+        }
+    },
+    /** Looser than DARK so a nest lit by nearby mutation mushrooms still qualifies. */
+    DIM("dim") {
+        @Override
+        public boolean test(Level level, BlockPos nest) {
+            return level.getMaxLocalRawBrightness(nest) <= DIM_MAX_LIGHT;
         }
     },
     OPEN_AIR("open_air") {
@@ -32,7 +39,8 @@ public enum HatchCondition implements StringRepresentable {
 
     public static final Codec<HatchCondition> CODEC = StringRepresentable.fromEnum(HatchCondition::values);
 
-    private static final int MAX_LIGHT = 5;
+    private static final int DARK_MAX_LIGHT = 5;
+    private static final int DIM_MAX_LIGHT = 7;
     private static final int AIR_BLOCKS_ABOVE = 8;
 
     private final String name;
